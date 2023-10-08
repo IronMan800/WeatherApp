@@ -108,5 +108,15 @@
     <Resource Include="Source\Черта_Иконка.png" />
     <Resource Include="Source\ЧертаАктивная_Иконка.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\Город_НеАктивный.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\Город_Активный.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\СтрелкаВниз_Активная.png" />
+    <Resource Include="Source\СтрелкаВниз_НеАктивная.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

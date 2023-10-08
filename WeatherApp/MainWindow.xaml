@@ -14,6 +14,41 @@
             <GradientStop Color="#FFE19261" Offset="0.61"/>
         </LinearGradientBrush>
     </Window.Background>
+
+    <Window.Resources>
+        <Style x:Key="ComboboxButton" TargetType="Button">
+            <Setter Property="OverridesDefaultStyle" Value="True"/>
+            <Setter Property="Background" Value="#FFBA7065"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Name="border" BorderThickness="0" BorderBrush="Black" Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <EventTrigger RoutedEvent="PreviewMouseDown">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ThicknessAnimation Storyboard.TargetProperty="Margin" Duration="0:0:0.100" To="2,2,0,0"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                            <EventTrigger RoutedEvent="PreviewMouseUp">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ThicknessAnimation Storyboard.TargetProperty="Margin" Duration="0:0:0.100" To="0"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
+        </Style>
+        
+    </Window.Resources>
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="25"/>
@@ -61,11 +96,73 @@
                 </Image>
             </StackPanel>
         </Grid>
+        
         <Grid Name="LogoContainer" Grid.Row="1" Background="Transparent" MouseDown="LogoContainer_MouseDown">
             <Image Source="/Логотип.png" Height="120"/>
-
         </Grid>
-        
+
+        <Border Name="CmbBorder" Grid.Row="2" Height="24" Width="50" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,15,0,0"
+                CornerRadius="2" BorderThickness="1" Background="#FFB96F66">
+            <Border.Style>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="BorderBrush" Value="#FF3A3A3A"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="BorderBrush" Value="#FFA75E68"/>
+                        </Trigger>
+                        <EventTrigger RoutedEvent="PreviewMouseDown">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation Storyboard.TargetProperty="BorderBrush.Color" Duration="0:0:0.100" To="#FF3A3A3A"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="PreviewMouseUp">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation Storyboard.TargetProperty="BorderBrush.Color" Duration="0:0:0.100" To="#FF8C8C8C"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Border.Style>
+            
+            <Button Style="{StaticResource ComboboxButton}">
+                <StackPanel Orientation="Horizontal">
+                    <Image Height="22" Width="22" Margin="3,0,0,0">
+                        <Image.Style>
+                            <Style TargetType="{x:Type Image}">
+                                <Setter Property="Source" Value="Source/Город_НеАктивный.png"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding Path=IsMouseOver, ElementName=CmbBorder}" Value="True">
+                                        <Setter Property="Source" Value="Source/Город_Активный.png"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}, AncestorLevel=1}, Path=IsPressed}" Value="True">
+                                        <Setter Property="Source" Value="Source/Город_НеАктивный.png"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Image.Style>
+                    </Image>
+                    <Image Height="15" Width="15" Margin="3,0,5,0">
+                        <Image.Style>
+                            <Style TargetType="{x:Type Image}">
+                                <Setter Property="Source" Value="Source/СтрелкаВниз_НеАктивная.png"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding Path=IsMouseOver, ElementName=CmbBorder}" Value="True">
+                                        <Setter Property="Source" Value="Source/СтрелкаВниз_Активная.png"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}, AncestorLevel=1}, Path=IsPressed}" Value="True">
+                                        <Setter Property="Source" Value="Source/СтрелкаВниз_НеАктивная.png"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Image.Style>
+                    </Image>
+                </StackPanel>
+            </Button>
+        </Border>
         
 
     </Grid>
