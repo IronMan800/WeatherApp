@@ -95,7 +95,18 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Source\" />
+    <Resource Include="Логотип.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\Дождь_Иконка.png" />
+    <Resource Include="Source\Крестик_Иконка.png" />
+    <Resource Include="Source\КрестикАктивный_Иконка.png" />
+    <Resource Include="Source\Облачно_Иконка.png" />
+    <Resource Include="Source\Солнце_Иконка.png" />
+    <Resource Include="Source\Термометр.png" />
+    <Resource Include="Source\Цельсия_Иконка.png" />
+    <Resource Include="Source\Черта_Иконка.png" />
+    <Resource Include="Source\ЧертаАктивная_Иконка.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

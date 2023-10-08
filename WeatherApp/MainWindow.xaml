@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WeatherApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="515" Width="365" WindowStyle="None" ResizeMode="NoResize">
+        Title="MainWindow" Height="515" Width="365" WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Window.Background>
         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
             <GradientStop Color="#FF99526A"/>
@@ -20,16 +20,50 @@
             <RowDefinition Height="100"/>
             <RowDefinition Height="390"/>
         </Grid.RowDefinitions>
-        <Grid Name="ToolBar" Grid.Row="0">
+        <Grid Name="ToolBar" Background="Transparent" Grid.Row="0" MouseDown="ToolBar_MouseDown">
             <Polygon Fill="Black" Opacity="0.5"
                  Points="107,0,
                  115,7,
                  249,7,
                  257,0"/>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                <Image Height="16" Width="16"/>
-                <Image Height="16" Width="16"/>
+                <Image Name="MinButton" Height="16" Width="16"  Margin="5" MouseDown="MinButton_MouseDown">
+                    <Image.Style>
+                        <Style TargetType="{x:Type Image}">
+                            <Setter Property="Source" Value="Source/Черта_Иконка.png"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IsMouseOver, ElementName=MinButton}" Value="True">
+                                    <Setter Property="Source" Value="Source/ЧертаАктивная_Иконка.png"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Image.Style>
+                    <Image.Effect>
+                        <BlurEffect Radius="1"/>
+                    </Image.Effect>
+                </Image>
+                    
+                <Image Name="ExitButton" Height="16" Width="16" Margin="0,5,5,5" MouseDown="ExitButton_MouseDown">
+                    <Image.Style>
+                        <Style TargetType="{x:Type Image}">
+                            <Setter Property="Source" Value="Source/Крестик_Иконка.png"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IsMouseOver, ElementName=ExitButton}" Value="True">
+                                    <Setter Property="Source" Value="Source/КрестикАктивный_Иконка.png"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Image.Style>
+                    <Image.Effect>
+                        <BlurEffect Radius="1"/>
+                    </Image.Effect>
+                    
+                </Image>
             </StackPanel>
+        </Grid>
+        <Grid Name="LogoContainer" Grid.Row="1" Background="Transparent" MouseDown="LogoContainer_MouseDown">
+            <Image Source="/Логотип.png" Height="120"/>
+
         </Grid>
         
         
