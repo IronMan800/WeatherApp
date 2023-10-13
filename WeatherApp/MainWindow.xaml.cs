@@ -51,5 +51,13 @@ namespace WeatherApp
                 this.DragMove();
             }
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if(GridCity.Visibility == Visibility.Hidden)
+                GridCity.Visibility = Visibility.Visible;
+            else
+                GridCity.Visibility = Visibility.Hidden;
+        }
     }
 }
