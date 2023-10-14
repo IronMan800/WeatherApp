@@ -63,7 +63,7 @@ namespace WeatherApp
                 switch (weatherResponse.Weather[0].Description)
                 {
                     case "пасмурно":
-                        
+                        ImageWeather.Source = new BitmapImage(new Uri(@"/Source/Облачно_Иконка.png", UriKind.RelativeOrAbsolute));
                         break;
                     case "небольшой проливной дождь":
                         ImageWeather.Source = new BitmapImage(new Uri(@"/Source/Дождь_Иконка.png", UriKind.RelativeOrAbsolute));
