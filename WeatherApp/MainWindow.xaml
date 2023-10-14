@@ -220,7 +220,7 @@
 
         </Grid>
 
-        <Grid Name="GridCity" Grid.Row="2" Height="160" Width="200" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,42,0,0" Visibility="Visible">
+        <Grid Name="GridCity" Grid.Row="2" Height="160" Width="200" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,42,0,0" Visibility="Hidden">
             <Polygon Fill="Black" StrokeThickness="2" Stroke="#FFCE8163"
                      Points="0,8,
                      0,128,
